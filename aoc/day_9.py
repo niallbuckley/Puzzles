@@ -2,6 +2,9 @@
 
 a = [10,13,16,21,30,45] 
 
+f = open("input.txt").read().strip()
+seqs = [[int(x) for x in l.split()] for l in f.split('\n')]
+
 dic = {}
 
 def next_val():
