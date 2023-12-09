@@ -1,4 +1,4 @@
-
+# Solution 1
 f = open("test_data.txt").read().strip()
 seqs = [[int(x) for x in l.split()] for l in f.split('\n')]
 
@@ -28,4 +28,5 @@ for seq in seqs:
     ans += prev
 print ("ans:", ans)
 
+# Solution 2 is simply reversing the seq before recursive call.
     
