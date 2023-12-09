@@ -30,3 +30,19 @@ print ("ans:", ans)
 
 # Solution 2 is simply reversing the seq before recursive call.
     
+## in-memory storage rather than dictionary
+
+def get_next_in_seq(sq):
+    if not any(sq):
+        return 0
+
+    diffs = []
+    for i in range(len(sq)-1):
+        diffs.append(sq[i+1] - sq[i])
+        
+    return sq[-1] + get_next_in_seq(diffs)
+
+result = 0
+for seq in seqs:
+    result += get_next_in_seq(seq)
+print("ans " + str(result))
