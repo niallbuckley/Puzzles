@@ -1,13 +1,10 @@
 
-
-a = [10,13,16,21,30,45] 
-
-f = open("input.txt").read().strip()
+f = open("test_data.txt").read().strip()
 seqs = [[int(x) for x in l.split()] for l in f.split('\n')]
 
 dic = {}
 
-def next_val():
+def next_val(seq):
     def recursion(i, line, new_line, layer):
         if sum(line) == 0:
             return layer
@@ -20,14 +17,15 @@ def next_val():
 
         
     
-    return recursion(0,a, [], 0)
+    return recursion(0,seq, [], 0)
 
-layer = next_val()
-print (dic, layer)
-
-prev = dic[layer-1]
-for i in range(layer-2,-1,-1):
-    prev = dic[i] + prev
-print (prev)
+ans = 0
+for seq in seqs:
+    layer = next_val(seq)
+    prev = dic[layer-1]
+    for i in range(layer-2,-1,-1):
+        prev = dic[i] + prev
+    ans += prev
+print ("ans:", ans)
 
     
