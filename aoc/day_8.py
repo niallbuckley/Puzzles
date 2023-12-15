@@ -1,3 +1,5 @@
+import sys
+
 def parse_line(line):
     key, value = line.strip().split(' = ')
     return key, value
@@ -16,16 +18,14 @@ for key, value in map(parse_line, lines):
     print (value.strip("()").split(", "))
     my_dict[key] = value.strip("()").split(", ")
 
-print (my_dict)
-print (path)
 
 class mySolution:
     def parse_tree(self, my_dict, path):
+        sys.setrecursionlimit(15000)
         self.count = 0
         def dfs(node, p, i):
             if node == 'ZZZ':
                 return 
-            print ("c", self.count)
             self.count += 1
             if i >= len(p):
                 i = 0
